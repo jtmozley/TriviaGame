@@ -20,14 +20,19 @@
   <body>
     <!-- welcome screen -->
     <div id="welcome" class="container jumbotron">
-        <h1 id="title" class="text-center">Trivia Game</h1>
-        <div class="text-center">
-          <button id="startButton" class="btn btn-primary">Start</button>
-        </div>
+      <h1 id="title" class="text-center">Trivia Game</h1>
+      <div class="text-center">
+        <button id="startButton" class="btn btn-primary">Start</button>
+      </div>
     </div>
 
     <!-- questionnaire -->
-    <div id="questions" class="container jumbotron"></div>
+    <div id="questions" class="container jumbotron">
+      <h2 id="timeDisplay" class="text-center"></h2>
+      <p id="theQuestion" class="text-center"></p>
+      <p id="true" class="text-center tf">True</p>
+      <p id="false" class="text-center tf">False</p>
+    </div>
 
     <!-- finish screen -->
     <div id="finish" class="container jumbotron"></div>
@@ -37,6 +42,7 @@
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"
     ></script>
+    <script src="./assets/javascript/app.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"

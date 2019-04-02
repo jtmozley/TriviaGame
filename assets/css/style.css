@@ -34,3 +34,16 @@ body {
     background-color: #1569AC;
     border-color: #1569AC;
 }
+
+#theQuestion {
+    font-size: 1.8rem;
+}
+
+.tf {
+    font-size: 1.5rem;
+}
+
+.tf:hover {
+    color: #1569AC;
+    cursor: pointer;
+}
