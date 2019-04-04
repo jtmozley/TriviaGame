@@ -7,28 +7,27 @@ var time = 6;
 
 var game = {
   question: [
-    'The movie Inglorious Bastards starred Leonardo DiCaprio?',
-    'Just about every character that you like in Game of Thrones dies?',
+    "The movie Inglorious Bastards starred Leonardo DiCaprio?",
+    "Just about every character that you like in Game of Thrones dies?",
     'Dwayne "The Rock" Johnson is one of the highest paid actors in Hollywood?'
   ],
-  answer: [false, true, true],
-  gameResult: []
+  answer: [false, true, true]
 };
-
-var selectedQuestion;
 var correctAnswer;
+var qIndex;
+//var userAnswer;
 
-$('document').ready(function() {
-  $('#questions').hide();
-  $('#finish').hide();
+$("document").ready(function() {
+  $("#questions").hide();
+  $("#finish").hide();
 });
 
 //when start button clicked run start()
-//-hide welcome screen html
-//-display question html
-$('#startButton').click(function() {
-  $('#welcome').hide();
-  $('#questions').show();
+$("#startButton").click(function() {
+  //hide welcome screen html
+  $("#welcome").hide();
+  //display question html
+  $("#questions").show();
   start();
 });
 
@@ -37,15 +36,22 @@ $('#startButton').click(function() {
 
 //fx display question
 function displayQuestion() {
+  qIndex = Math.floor(Math.random() * game.question.length);
   //select a question to display at random
-  selectedQuestion =
-    game.question[Math.floor(Math.random() * game.question.length)];
-    //select the appropriate answer and store the arr index in correctAnswer
-  correctAnswer = game.answer[selectedQuestion];
-  $('#theQuestion').html(selectedQuestion);
+  var selectedQuestion = game.question[qIndex];
+  //select the appropriate answer and store the arr index in correctAnswer
+  correctAnswer = game.answer[qIndex];
+  $("#theQuestion").html(selectedQuestion);
 }
 //check to see if the game is over if indexCount<game.question.length
 
+$(".tf").on("click", function() {
+  var userAnswer = $(this).attr("data-value");
+  var corrected = JSON.parse(userAnswer);
+  if (corrected === correctAnswer) {
+  } else {
+  }
+});
 //display guestion[indextCount]
 //answer[indexCount][0]
 //answer[indexCount][1]
@@ -106,7 +112,7 @@ function stop() {
 function count() {
   // decrement time by 1
   time--;
-  $('#timeDisplay').html('Time Remaining: ' + time);
+  $("#timeDisplay").html("Time Remaining: " + time);
 }
 
 count();

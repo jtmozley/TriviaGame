@@ -30,12 +30,16 @@
     <div id="questions" class="container jumbotron">
       <h2 id="timeDisplay" class="text-center"></h2>
       <p id="theQuestion" class="text-center"></p>
-      <p id="true" class="text-center tf">True</p>
-      <p id="false" class="text-center tf">False</p>
+      <p id="true" class="text-center tf" data-value="true">True</p>
+      <p id="false" class="text-center tf" data-value="false">False</p>
     </div>
 
     <!-- finish screen -->
-    <div id="finish" class="container jumbotron"></div>
+    <div id="finish" class="container jumbotron">
+      <p id="correctAnswers"></p>
+      <p id="incorrectAnswers"></p>
+      <p id="unanswered"></p>
+    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
