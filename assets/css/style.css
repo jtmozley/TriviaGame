@@ -14,10 +14,6 @@ body {
     border: .5px solid black;
 }
 
-/* #welcome {
-    
-} */
-
 #title {
     font-size: 5.0rem;
 }
@@ -45,5 +41,6 @@ body {
 
 .tf:hover {
     color: #1569AC;
+    /* font: 1px solid #1569AC; */
     cursor: pointer;
 }
