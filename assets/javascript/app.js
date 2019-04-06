@@ -82,20 +82,24 @@ function gameOver() {
   }
 }
 
+//reset time
 function reset() {
   stop();
   time = 4;
   start();
 }
 
+//clock isnt running
 function start() {
   if (!clockRunning) {
+    //run count every second
     intervalId = setInterval(count, 1000);
     clockRunning = true;
     displayQuestion();
   }
 }
 
+//stops count
 function stop() {
   clearInterval(intervalId);
   clockRunning = false;
@@ -105,7 +109,7 @@ function stop() {
 function count() {
   time--;
   $("#timeDisplay").html("Time Remaining: " + time);
-  //on time out increment unanswered a
+  //on time out increment unanswered
   if (time === 0) {
     unanswered++;
     removeQuestion();
