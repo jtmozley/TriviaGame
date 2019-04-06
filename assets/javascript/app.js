@@ -1,10 +1,3 @@
-//create game object
-var intervalId;
-
-// prevents the clock from being sped up unnecessarily
-var clockRunning = false;
-var time = 6;
-
 var game = {
   question: [
     "The movie Inglorious Bastards starred Leonardo DiCaprio?",
@@ -13,16 +6,31 @@ var game = {
   ],
   answer: [false, true, true]
 };
-var correctAnswer;
-var qIndex;
-//var userAnswer;
 
+var answer;
+var correctAnswers = 0;
+var incorrectAnswers = 0;
+var unanswered = 0;
+var qIndex;
+
+var correctAnswersText = $("#correctAnswers");
+var incorrectAnswersText = $("#incorrectAnswers");
+var unansweredText = $("#unanswered");
+
+var intervalId;
+var clockRunning = false;
+var time = 4;
+var clockRunning = false;
+
+//at document load
 $("document").ready(function() {
+  //hide questions html
   $("#questions").hide();
+  //hide finish html
   $("#finish").hide();
 });
 
-//when start button clicked run start()
+//on start button click
 $("#startButton").click(function() {
   //hide welcome screen html
   $("#welcome").hide();
@@ -31,88 +39,82 @@ $("#startButton").click(function() {
   start();
 });
 
-//start game
-//rest indexCount=0
-
-//fx display question
 function displayQuestion() {
+  //store an index value
   qIndex = Math.floor(Math.random() * game.question.length);
-  //select a question to display at random
+  //select a question to display at the above determined index
   var selectedQuestion = game.question[qIndex];
-  //select the appropriate answer and store the arr index in correctAnswer
-  correctAnswer = game.answer[qIndex];
+  //select the appropriate answer and store the arr index in answer
+  answer = game.answer[qIndex];
+  //display question to page
   $("#theQuestion").html(selectedQuestion);
 }
-//check to see if the game is over if indexCount<game.question.length
 
 $(".tf").on("click", function() {
+  //store users click on true or false
   var userAnswer = $(this).attr("data-value");
+  //changes "data-value" to boolean for comparison
   var corrected = JSON.parse(userAnswer);
-  if (corrected === correctAnswer) {
-  } else {
+  //if user chooses right answer increment correctAnswers
+  if (corrected === answer) {
+    correctAnswers++;
+    removeQuestion();
+    reset();
+    gameOver();
+    //if user chooses wrong answer increment incorrectAnswers
+  } else if (corrected !== answer) {
+    incorrectAnswers++;
+    removeQuestion();
+    reset();
+    gameOver();
   }
 });
-//display guestion[indextCount]
-//answer[indexCount][0]
-//answer[indexCount][1]
-//answer[indexCount][2]
-//call time
 
-//if time is up
-//call the display results
-//update the unanswered++;
-
-//if user onlicks then grab the value they store and check it against results[indexCount]
-//if correct wins++
-//if not correct = lose++;
-
-//else call GameOver fx to display results
-
-//if time runs out or user clicks answer, store val
-//check score
-
-//fx display results
-//show
-//result[indexCount]
-//update indexCount
-//stop time
-//reset the time
-
-//call display question fx
-
-//function gameOver
-//display wins, lost, unanswered
-
-var intervalId;
-
-// prevents the clock from being sped up unnecessarily
-var clockRunning = false;
-var time = 6;
+function gameOver() {
+  //once no questions remain
+  if (game.question.length === 0) {
+    stop();
+    correctAnswersText.html("Correct " + correctAnswers);
+    incorrectAnswersText.html("Incorrect " + incorrectAnswers);
+    unansweredText.html("Unanswered " + unanswered);
+    $("#questions").hide();
+    $("#finish").show();
+  }
+}
 
 function reset() {
-  time = 6;
-
-  // DONE: Change the 'display' div to '00:00.'
+  stop();
+  time = 4;
+  start();
 }
 
 function start() {
-  // DONE: Use setInterval to start the count here and set the clock to running.
   if (!clockRunning) {
     intervalId = setInterval(count, 1000);
     clockRunning = true;
     displayQuestion();
   }
 }
+
 function stop() {
-  // DONE: Use clearInterval to stop the count here and set the clock to not be running.
   clearInterval(intervalId);
   clockRunning = false;
 }
 
+//decrement time and display to page
 function count() {
-  // decrement time by 1
   time--;
   $("#timeDisplay").html("Time Remaining: " + time);
+  //on time out increment unanswered a
+  if (time === 0) {
+    unanswered++;
+    removeQuestion();
+    reset();
+    gameOver();
+  }
 }
 
-count();
+//removes from the array the question most recently displayed to the user
+function removeQuestion() {
+  game.question.splice(qIndex, 1);
+}

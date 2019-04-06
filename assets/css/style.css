@@ -1,46 +1,51 @@
 * {
-    font-family: 'Special Elite', cursive;
+  font-family: "Special Elite", cursive;
 }
 
 body {
-    background-image: url(../images/kyler-nixon-208875-unsplash.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    padding-top: 45px;
+  background-image: url(../images/kyler-nixon-208875-unsplash.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding-top: 45px;
 }
 
 .jumbotron {
-    background-color: #E49C00;
-    border: .5px solid black;
+  background-color: #e49c00;
+  border: 0.5px solid black;
 }
 
 #title {
-    font-size: 5.0rem;
+  font-size: 5rem;
 }
 
 #startButton {
-    padding: 28px 80px;
-    margin-top: 20px;
+  padding: 28px 80px;
+  margin-top: 20px;
 }
 
 .btn {
-    font-size: 2.0rem;
+  font-size: 2rem;
 }
 .btn-primary {
-    background-color: #1569AC;
-    border-color: #1569AC;
+  background-color: #1569ac;
+  border-color: #1569ac;
+  color: #fff;
 }
 
 #theQuestion {
-    font-size: 1.8rem;
+  font-size: 1.8rem;
 }
 
 .tf {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .tf:hover {
-    color: #1569AC;
-    /* font: 1px solid #1569AC; */
-    cursor: pointer;
+  color: #1569ac;
+  /* font: 1px solid #1569AC; */
+  cursor: pointer;
+}
+
+.stats {
+  font-size: 1.8rem;
 }
